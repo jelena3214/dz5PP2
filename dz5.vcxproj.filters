@@ -23,5 +23,17 @@
     <Text Include="ulaz.txt">
       <Filter>Source Files</Filter>
     </Text>
+    <Text Include="2_dirA.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="5_dirA.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="7_dirA.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="10_dirA.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

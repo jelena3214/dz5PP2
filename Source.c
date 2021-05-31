@@ -33,8 +33,10 @@ Nodeinfo *readInput(Nodeinfo* info, FILE *in) {
 	*name = '\0';
 		
 	fscanf(in, "%lf", &info->geoWidth);
+	info->geoWidth = info->geoWidth * 3.14 / 180;
 	fgetc(in);
 	fscanf(in, "%lf", &info->geoHeight);
+	info->geoHeight = info->geoHeight * 3.14 / 180;
 	fgetc(in);
 	fscanf(in, "%d", &info->zone);
 	fgetc(in);
@@ -49,8 +51,8 @@ struct linkedListNode* createNode(Nodeinfo *info) {
 	newnode->prev = NULL;
 }
 
-struct linkedlistNode* createLinkedList() {
-	FILE* in = fopen("ulaz.txt", "r");
+struct linkedlistNode* createLinkedList(char *filename) {
+	FILE* in = fopen(filename, "r");
 	struct linkedListNode* head = NULL;
 	struct linkedListNode* p = NULL;
 	while (1) {
@@ -76,12 +78,6 @@ struct linkedlistNode* createLinkedList() {
 
 double distance(struct linkedListNode* node1, struct linkedListNode* node2) {
 	int r = 6371;
-
-	//transform coordinates
-	node1->info->geoWidth = node1->info->geoWidth * 3.14 / 180;
-	node2->info->geoWidth = node2->info->geoWidth * 3.14 / 180;
-	node1->info->geoWidth = node1->info->geoHeight * 3.14 / 180;
-	node2->info->geoWidth = node2->info->geoHeight * 3.14 / 180;
 
 	double part1 = (node1->info->geoWidth - node2->info->geoWidth) / 2;
 	double part2 = (node1->info->geoHeight - node2->info->geoHeight) / 2;
@@ -113,7 +109,7 @@ void writetoFile(char *filename, struct linkedListNode *begin) {
 	while (s != NULL) {
 		temp = distance(p, s);
 		Alldistance += temp;
-		fprintf(write, "%s!%s!%lf\n", p->info->name, s->info->name, temp);
+		fprintf(write, "%s!%s!%.2lf\n", p->info->name, s->info->name, temp);
 		p = p->next;
 		s = p->next;
 	}
@@ -121,15 +117,81 @@ void writetoFile(char *filename, struct linkedListNode *begin) {
 	fclose(write);
 }
 
+void freeList(struct linkedListNode* head) {
+	struct linkedListNode* p = head;
+	struct linkedListNode* temp = head;
+	while (p != NULL) {
+		temp = p;
+		p = p->next;
+		free(temp->info);
+		free(temp);
+	}
+}
+//free
+//2_dirA_distance.txt 5_dirA_distance.txt
+//dirA 2 5 7 10
 int main() {
-	struct linkedListNode* begin = createLinkedList();
-	printLinkedlist(begin);
+	char* name = malloc(sizeof(char) * 5);
+	scanf("%s", name);
+	char k = getchar();
 
-	char s[] = "2_dirA_distance.txt";
+	char *number = malloc(sizeof(char));
+	char* filename = NULL;
+	char temp;
+	int i = 0, numSize = 1;
+	char* outfile = NULL;
 
+	while ((temp = getchar()) != '\n') {
+		if (temp == ' ') {
+			char* filename = malloc(sizeof(char) * 50);
+			char* outfile = malloc(sizeof(char) * 50);
+			filename[0] = '\0';
+			outfile[0] = '\0';
+			strcat(filename, number);
+			strcat(filename, "_\0");
+			strcat(filename, name);
+			strcat(filename, ".txt");
+			strcat(outfile, number);
+			strcat(outfile, "_\0");
+			strcat(outfile, name);
+			strcat(outfile, "_distance.txt");
 
-	writetoFile(s, begin);
+			struct linkedListNode* begin = createLinkedList(filename);
+			writetoFile(outfile, begin);
 
+			freeList(begin);
+			free(outfile);
+			free(filename);
+			free(number);
+			number = malloc(sizeof(char));
+			numSize = 1;
+			continue;
+		}
+		number = realloc(number, sizeof(char) * (numSize + 1));
+		number[numSize - 1] = temp;
+		number[numSize++] = '\0';
+	}
+
+	filename = malloc(sizeof(char) * 50);
+	outfile = malloc(sizeof(char) * 50);
+	filename[0] = '\0';
+	outfile[0] = '\0';
+	strcat(filename, number);
+	strcat(filename, "_\0");
+	strcat(filename, name);
+	strcat(filename, ".txt");
+	strcat(outfile, number);
+	strcat(outfile, "_\0");
+	strcat(outfile, name);
+	strcat(outfile, "_distance.txt");
+
+	struct linkedListNode* begin = createLinkedList(filename);
+	writetoFile(outfile, begin);
+
+	freeList(begin);
+	free(outfile);
+	free(filename);
+	free(number);
 
 	return 0;
 }

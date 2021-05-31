@@ -1,0 +1,32 @@
+Ustanicka!Koste Trifkovica!0.58
+Koste Trifkovica!Mite Ruzica!0.23
+Mite Ruzica!dr Velizara Kosanovica!0.26
+dr Velizara Kosanovica!Pijaca Zvezdara!0.50
+Pijaca Zvezdara!Batutova!0.60
+Batutova!Lion!0.33
+Lion!Pop Stojanova!0.43
+Pop Stojanova!Pijaca Djeram!0.34
+Pijaca Djeram!GO Zvezdara!0.36
+GO Zvezdara!Vukov spomenik /Bul.kralja Aleksa./!0.42
+Vukov spomenik /Bul.kralja Aleksa./!Pravni fakultet!0.63
+Pravni fakultet!Tasmajdan!0.35
+Tasmajdan!RK Beogradjanka!0.37
+RK Beogradjanka!Glavna zeleznicka stanica!0.62
+Glavna zeleznicka stanica!Ekonomski fakultet!0.35
+Ekonomski fakultet!Staro sajmiste!1.06
+Staro sajmiste!Blok 21!0.56
+Blok 21!Sava centar!0.61
+Sava centar!Blok 23!0.32
+Blok 23!Milutina Milankovica!0.40
+Milutina Milankovica!Zeleznicka stanica Novi Beograd!0.32
+Zeleznicka stanica Novi Beograd!Blok 42!0.34
+Blok 42!Naselje Belvil!0.51
+Naselje Belvil!Agostina Neta!0.55
+Agostina Neta!Omladinskih brigada!0.34
+Omladinskih brigada!Blok 70!0.40
+Blok 70!Gandijeva!0.50
+Gandijeva!Nehruova!0.59
+Nehruova!OS Branko Radicevic!0.42
+OS Branko Radicevic!dr Ivana Ribara!0.44
+dr Ivana Ribara!Blok 45!0.47
+14.18

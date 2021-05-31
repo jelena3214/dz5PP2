@@ -1,18 +1,18 @@
-Pristaniste!Kalemegdan!27.237824
-Kalemegdan!Brace Baruh!17.782548
-Brace Baruh!Kralja Petra!14.982618
-Kralja Petra!Dorcol /Kneginje Ljubice/!27.188281
-Dorcol /Kneginje Ljubice/!Pijaca Skadarlija!17.464366
-Pijaca Skadarlija!Bulevar despota Stefana!13.901642
-Bulevar despota Stefana!Takovska!14.617840
-Takovska!Palilulska pijaca!15.891003
-Palilulska pijaca!Masinski fakultet!14.662128
-Masinski fakultet!Vukov spomenik!5.688079
-Vukov spomenik!Pravni fakultet!41.879355
-Pravni fakultet!Tasmajdan!24.579270
-Tasmajdan!RK Beogradjanka!18.211294
-RK Beogradjanka!Glavna zeleznicka stanica!42.205037
-Glavna zeleznicka stanica!Ekonomski fakultet!19.458595
-Ekonomski fakultet!Brankov most!13.457660
-Brankov most!Pristaniste!9.625103
-338.83
+Pristaniste!Kalemegdan!0.42
+Kalemegdan!Brace Baruh!0.51
+Brace Baruh!Kralja Petra!0.25
+Kralja Petra!Dorcol /Kneginje Ljubice/!0.45
+Dorcol /Kneginje Ljubice/!Pijaca Skadarlija!0.40
+Pijaca Skadarlija!Bulevar despota Stefana!0.28
+Bulevar despota Stefana!Takovska!0.36
+Takovska!Palilulska pijaca!0.41
+Palilulska pijaca!Masinski fakultet!0.36
+Masinski fakultet!Vukov spomenik!0.26
+Vukov spomenik!Pravni fakultet!0.60
+Pravni fakultet!Tasmajdan!0.35
+Tasmajdan!RK Beogradjanka!0.37
+RK Beogradjanka!Glavna zeleznicka stanica!0.62
+Glavna zeleznicka stanica!Ekonomski fakultet!0.48
+Ekonomski fakultet!Brankov most!0.30
+Brankov most!Pristaniste!0.51
+6.92
