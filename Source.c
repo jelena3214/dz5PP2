@@ -1,6 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
+#include <string.h>
 #define MAX_SIZE 256
 
 typedef struct nodeInfo {
@@ -72,6 +74,29 @@ struct linkedlistNode* createLinkedList() {
 	return head;
 }
 
+double distance(struct linkedListNode* node1, struct linkedListNode* node2) {
+	int r = 6371;
+
+	//transform coordinates
+	node1->info->geoWidth = node1->info->geoWidth * 3.14 / 180;
+	node2->info->geoWidth = node2->info->geoWidth * 3.14 / 180;
+	node1->info->geoWidth = node1->info->geoHeight * 3.14 / 180;
+	node2->info->geoWidth = node2->info->geoHeight * 3.14 / 180;
+
+	double part1 = (node1->info->geoWidth - node2->info->geoWidth) / 2;
+	double part2 = (node1->info->geoHeight - node2->info->geoHeight) / 2;
+
+	double t1 = sin(part1) * sin(part1);
+	double t2 = sin(part2) * sin(part2);
+
+	double part3 = asin(sqrt(t1 + t2 * cos(node1->info->geoWidth) * cos(node2->info->geoWidth)));
+
+	double d = 2.0 * r * part3;
+
+	return d;
+
+}
+
 void printLinkedlist(struct linkedListNode* head) {
 	struct linkedListNode* p = head;
 	while (p != NULL) {
@@ -80,9 +105,31 @@ void printLinkedlist(struct linkedListNode* head) {
 	}
 }
 
+void writetoFile(char *filename, struct linkedListNode *begin) {
+	FILE* write = fopen(filename, "w");
+	double Alldistance = 0.0, temp;
+	struct linkedListNode* p = begin;
+	struct linkedListNode* s = p->next;
+	while (s != NULL) {
+		temp = distance(p, s);
+		Alldistance += temp;
+		fprintf(write, "%s!%s!%lf\n", p->info->name, s->info->name, temp);
+		p = p->next;
+		s = p->next;
+	}
+	fprintf(write, "%.2lf", Alldistance);
+	fclose(write);
+}
 
 int main() {
 	struct linkedListNode* begin = createLinkedList();
 	printLinkedlist(begin);
+
+	char s[] = "2_dirA_distance.txt";
+
+
+	writetoFile(s, begin);
+
+
 	return 0;
 }
