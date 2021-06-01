@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
+#include <ctype.h>
 #define MAX_SIZE 256
 
 typedef struct nodeInfo {
@@ -153,11 +154,21 @@ void freeList(struct linkedListNode* head) {
 //dirA 2 5 7 10
 int main(int argc, const char **argv[]) {
 	char* name = argv[1];
-	if (argc <= 2) {
+	if (argc < 3) {
 		printf("ARG_GRESKA");
 		exit(0);
 	}
+
 	for (int i = 2; i < argc; i++) {
+		//sta ovde raditi sve obstaviti  ili samo arg greska za onaj koji nije okej?
+		if (!isdigit(atoi(argv[i]))) {
+			printf("ARG_GRESKA");
+			exit(0);
+		}
+	}
+
+	for (int i = 2; i < argc; i++) {
+		
 		char* filename = malloc(sizeof(char) * 50);
 		if (!filename) {
 			printf("MEM_GRESKA");
@@ -180,8 +191,13 @@ int main(int argc, const char **argv[]) {
 		strcat(outfile, "_distance.txt");
 
 		struct linkedListNode* begin = createLinkedList(filename);
-		writetoFile(outfile, begin);
-		
+		if (begin == NULL) {
+			printf("DAT_GRESKA");
+			continue;
+		}
+		else {
+			writetoFile(outfile, begin);
+		}
 		freeList(begin);
 		free(outfile);
 		free(filename);
