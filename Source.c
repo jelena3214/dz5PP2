@@ -181,7 +181,7 @@ int main(int argc, const char **argv[]) {
 
 		struct linkedListNode* begin = createLinkedList(filename);
 		writetoFile(outfile, begin);
-
+		
 		freeList(begin);
 		free(outfile);
 		free(filename);
