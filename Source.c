@@ -17,14 +17,14 @@ typedef struct nodeInfo {
 
 struct linkedListNode {
 	Nodeinfo *info;
-	struct linkedListNode* prev;
-	struct linkedListNode* next;
+	struct linkedListNode *prev;
+	struct linkedListNode *next;
 };
 
 Nodeinfo *readInput(Nodeinfo* info, FILE *in) {
 	char* name, c;
 	
-	fscanf(in, "%d", &info->stopNumber);
+	if (fscanf(in, "%d", &info->stopNumber) == EOF)return NULL;
 	fgetc(in);
 
 	name = info->name;
@@ -67,13 +67,16 @@ struct linkedlistNode* createLinkedList(char *filename) {
 	struct linkedListNode* p = NULL;
 	while (1) {
 		Nodeinfo* info = malloc(sizeof(Nodeinfo));
+		Nodeinfo* temp = info;
 		if (!info) {
 			printf("MEM_GRESKA");
 			exit(0);
 		}
 		info = readInput(info, in);
-		if (info == NULL)break;
-
+		if (info == NULL) {
+			free(temp);
+			break;
+		}
 		struct linkedListNode* newnode = createNode(info);
 		if (head == NULL) {
 			head = newnode;
