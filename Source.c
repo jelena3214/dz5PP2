@@ -149,9 +149,7 @@ void freeList(struct linkedListNode* head) {
 		free(temp);
 	}
 }
-//free
-//2_dirA_distance.txt 5_dirA_distance.txt
-//dirA 2 5 7 10
+
 int main(int argc, const char **argv[]) {
 	char* name = argv[1];
 	if (argc < 3) {
@@ -159,13 +157,13 @@ int main(int argc, const char **argv[]) {
 		exit(0);
 	}
 
-	for (int i = 2; i < argc; i++) {
+	//for (int i = 2; i < argc; i++) {
 		//sta ovde raditi sve obstaviti  ili samo arg greska za onaj koji nije okej?
-		if (!isdigit(atoi(argv[i]))) {
-			printf("ARG_GRESKA");
-			exit(0);
-		}
-	}
+		//if (!isdigit(atoi(argv[i]))) {
+			//printf("ARG_GRESKA");
+			//exit(0);
+		//}
+	//}
 
 	for (int i = 2; i < argc; i++) {
 		
